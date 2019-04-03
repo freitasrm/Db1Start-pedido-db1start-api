@@ -32,6 +32,8 @@ public class Produto {
 	@Column(name="status",length = 30, nullable = false)
 	private ProdutoStatus status;
 	
+	protected Produto() {}
+	
 	public Produto(String codigo, String nome, Double valor) {
 		Verificador.naoNulo(codigo, "código do produto");
 		Verificador.naoNulo(nome, "nome do produto");
@@ -44,7 +46,7 @@ public class Produto {
 	}
 	
 	public void inativar() {
-		if (ProdutoStatus.ATIVO.equals(this.status)) {
+		if (!ProdutoStatus.ATIVO.equals(this.status)) {
 			throw new RuntimeException("Produto está " + this.status);
 		}
 		this.status = ProdutoStatus.INATIVO;
@@ -69,10 +71,10 @@ public class Produto {
 	public ProdutoStatus getStatus() {
 		return status;
 	}
-	
+		
 	@Override
 	public String toString() {
 		return "Codigo: "+this.codigo+" Nome: "+this.nome+" Valor: "+ String.format("%.2f",this.getValor());
 	}
-
+	
 }
