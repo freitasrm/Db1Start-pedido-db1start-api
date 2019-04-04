@@ -1,9 +1,11 @@
-package br.com.db1.pedidos.pedidosapi.repositorio;
+package br.com.db1.pedidos.pedidosapi.repository;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-import br.com.db1.pedidos.pedidosapi.domain.Produto;
+import br.com.db1.pedidos.pedidosapi.domain.entity.Produto;
 
+@Repository
 public interface ProdutoRepository extends CrudRepository<Produto, Long> {
 	
 	Produto findBycodigo(String codigo);
