@@ -3,18 +3,24 @@ package br.com.db1.pedidos.pedidosapi.domain.dto;
 import java.io.Serializable;
 import java.util.Objects;
 
+import br.com.db1.pedidos.pedidosapi.domain.entity.ProdutoStatus;
+
 public class ProdutoDTO implements Serializable{
 	
 	public static final long serialVersionUID = 23L;
 
+	private Long id;
 	private Double valor;
 	private String nome;
 	private String codigo;
+	private ProdutoStatus status;
 
-	public ProdutoDTO(String codigo, String nome, Double valor) {
+	public ProdutoDTO(Long id, String codigo, String nome, Double valor, ProdutoStatus status) {
+		this.id = id;
 		this.codigo = codigo;
 		this.nome = nome;
 		this.valor = valor;
+		this.status = status;
 	}
 	
 	public ProdutoDTO() {
@@ -22,6 +28,14 @@ public class ProdutoDTO implements Serializable{
 
 	public Double getValor() {
 		return valor;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getId() {
+		return id;
 	}
 
 	public void setValor(Double valor) {
@@ -38,6 +52,14 @@ public class ProdutoDTO implements Serializable{
 
 	public String getCodigo() {
 		return codigo;
+	}
+
+	public void setStatus(ProdutoStatus status) {
+		this.status = status;
+	}
+
+	public ProdutoStatus getStatus() {
+		return status;
 	}
 
 	public void setCodigo(String codigo) {

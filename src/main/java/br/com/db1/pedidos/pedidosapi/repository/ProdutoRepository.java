@@ -1,5 +1,7 @@
 package br.com.db1.pedidos.pedidosapi.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,7 +13,7 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 	
 	Produto findBycodigo(String codigo);
 	
-	Iterable<Produto> findByStatus(ProdutoStatus status);
+	List<Produto> findByStatus(ProdutoStatus status);
 	
 
 }

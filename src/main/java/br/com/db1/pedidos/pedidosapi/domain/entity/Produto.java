@@ -56,6 +56,10 @@ public class Produto {
 		return  ProdutoStatus.ATIVO.equals(this.status);
 	}
 
+	public Long getId() {
+		return id;
+	}
+
 	public String getCodigo() {
 		return codigo;
 	}

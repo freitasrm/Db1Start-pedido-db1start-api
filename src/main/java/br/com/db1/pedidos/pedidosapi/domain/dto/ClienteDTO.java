@@ -3,16 +3,25 @@ package br.com.db1.pedidos.pedidosapi.domain.dto;
 import java.io.Serializable;
 import java.util.Objects;
 
+import br.com.db1.pedidos.pedidosapi.domain.entity.ClienteStatus;
+
 public class ClienteDTO implements Serializable{
 	
 	public static final long serialVersionUID = 23L;
 
+	private Long id;
+	
 	private String nome;
+	
 	private String cpf;
+	
+	private ClienteStatus status;
 
-	public ClienteDTO(String nome, String cpf) {
+	public ClienteDTO(Long id, String nome, String cpf, ClienteStatus status) {
+		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
+		this.status = status;
 	}
 	
 	public ClienteDTO() {
@@ -20,6 +29,14 @@ public class ClienteDTO implements Serializable{
 
 	public String getNome() {
 		return nome;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getId() {
+		return id;
 	}
 
 	public void setNome(String nome) {
@@ -32,6 +49,14 @@ public class ClienteDTO implements Serializable{
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+
+	public ClienteStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(ClienteStatus status) {
+		this.status = status;
 	}
 
 	@Override

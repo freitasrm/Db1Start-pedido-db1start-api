@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import br.com.db1.pedidos.pedidosapi.domain.dto.ProdutoDTO;
 import br.com.db1.pedidos.pedidosapi.domain.entity.Produto;
+import br.com.db1.pedidos.pedidosapi.domain.entity.ProdutoStatus;
 import br.com.db1.pedidos.pedidosapi.repository.ProdutoRepository;
 
 @RunWith(SpringRunner.class)
@@ -33,9 +34,9 @@ public class ProdutoServiceTest 	{
 		BDDMockito.when(produtoRepository.findAll()).thenReturn(value);
 		
 		List<ProdutoDTO> expected = new ArrayList<ProdutoDTO>();
-		expected.add(new ProdutoDTO("A","A",10.0));
+		expected.add(new ProdutoDTO((long)1,"A","A",10.0,ProdutoStatus.ATIVO));
 		
-		List<ProdutoDTO> actual = produtoService.getAll();
+		List<ProdutoDTO> actual = produtoService.getAllActive();
 		
 		Assert.assertEquals(expected, actual);
 		
@@ -46,7 +47,7 @@ public class ProdutoServiceTest 	{
 		BDDMockito.when(produtoRepository.findAll()).thenReturn(null);
 		
 		List<ProdutoDTO> expected = new ArrayList<ProdutoDTO>();
-		List<ProdutoDTO> actual = produtoService.getAll();
+		List<ProdutoDTO> actual = produtoService.getAllActive();
 
 		Assert.assertEquals(expected, actual);
 	}
